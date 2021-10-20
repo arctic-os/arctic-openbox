@@ -1,0 +1,1 @@
+Openbox Configuration for ArcticOS
