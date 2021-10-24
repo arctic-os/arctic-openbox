@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-R="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" &> /dev/null && pwd  )"
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" &> /dev/null && pwd  )"
 SFILE="$DIR/system.ini"
 RFILE="$DIR/.system"
 
@@ -10,7 +10,7 @@ get_values() {
     CARD=$(light -L | grep 'backlight' | head -n1 | cut -d'/' -f3)
     BATTERY=$(upower -i `upower -e | grep 'BAT'` | grep 'native-path' | cut -d':' -f2 | tr -d '[:blank:]')
     ADAPTER=$(upower -i `upower -e | grep 'AC'` | grep 'native-path' | cut -d':' -f2 | tr -d '[:blank:]')
-    INTERFACE=$(ip link | awk '/state UP/ {print [}' | tr -d :)
+    INTERFACE=$(ip link | awk '/state UP/ {print}' | tr -d :)
 }
 
 ## Write values to `system.ini` file
@@ -36,4 +36,4 @@ if [[ ! -f "$RFILE"  ]]; then
     touch ${RFILE}
 fi
 
-bash "$HOME"/.config/openbox/adaptive/launch.sh
+bash "$HOME"/.config/openbox/polybar/adaptive/launch.sh
