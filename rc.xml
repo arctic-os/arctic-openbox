@@ -554,22 +554,22 @@
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>exec alacritty</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-f">
       <action name="Execute">
-        <command>exec thunar</command>
+        <command>thunar</command>
       </action>
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-        <command>exec firefox</command>
+        <command>firefox</command>
       </action>
     </keybind>
     <keybind key="W-e">
       <action name="Execute">
-        <command>exec geany</command>
+        <command>geany</command>
       </action>
     </keybind>
     <!--############### CLI Apps ###############-->
