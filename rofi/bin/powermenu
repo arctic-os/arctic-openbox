@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+
+THEME_DIR="default"
+STYLE="powermenu"
+
+ROFI_DIR="$HOME/.config/rofi"
+SCRIPT_DIR="$HOME/.config/scripts"
+rofi_command="rofi -theme $ROFI_DIR/themes/$THEME_DIR/$STYLE.rasi"
+uptime=$(uptime -p | sed -e 's/up //g')
+
+confirmDialog () {
+    $ROFI_DIR/bin/promptmenu
+}
+
+shutdown=""
+reboot=""
+lock=""
+suspend=""
+logout=""
+
+options="$lock\n$suspend\n$logout\n$reboot\n$shutdown"
+
+chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 0)"
+case $chosen in
+    $shutdown)
+        ans=$(confirmDialog)
+	    if [[ $ans == "0" ]]; then
+            $SCRIPT_DIR/sys-powermenu --shutdown
+	    elif [[ $ans == "1" ]]; then
+            exit
+        fi
+        ;;
+    $reboot)
+        ans=$(confirmDialog)
+	    if [[ $ans == "0" ]]; then
+            $SCRIPT_DIR/sys-powermenu --reboot
+	    elif [[ $ans == "1" ]]; then
+            exit
+        fi
+        ;;
+    $lock)
+        ans=$(confirmDialog)
+	    if [[ $ans == "0" ]]; then
+            $SCRIPT_DIR/sys-powermenu --lock
+	    elif [[ $ans == "1" ]]; then
+            exit
+        fi
+        ;;
+    $suspend) 
+        ans=$(confirmDialog)
+	    if [[ $ans == "0" ]]; then
+            $SCRIPT_DIR/sys-powermenu --suspend
+	    elif [[ $ans == "1" ]]; then
+            exit
+        fi
+        ;;
+    $logout) 
+        ans=$(confirmDialog)
+	    if [[ $ans == "0" ]]; then
+            $SCRIPT_DIR/sys-powermenu --logout
+	    elif [[ $ans == "1" ]]; then
+            exit
+        fi
+        ;;
+esac

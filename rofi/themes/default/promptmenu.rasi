@@ -1,0 +1,90 @@
+configuration {
+	font: "FantasqueSansMono Nerd Font 14";
+  show-icons: false;
+  drun-display-format: "{name}";
+  disable-history: false;
+	sidebar-mode: false;
+}
+
+* {
+  icon-font: "feather 24";
+}
+
+@import "colors.rasi"
+
+
+* {
+  background-color: @background;
+  text-color: @foreground;
+  font: @font;
+}
+
+window {
+  width: 21%;
+  height: 20%;
+  border-radius: 10px;
+  location: center;
+  padding: 0px;
+  border: 0px;
+}
+
+mainbox {
+    background-color: @background;
+    children:[ prompt, listview ];
+    spacing: 1%;
+    padding: 1.5% 1.5%;
+}
+
+listview {
+  layout: horizontal;
+  background-color: @background;
+  spacing: 1.5%;
+  lines: 2;
+  padding: 0;
+}
+
+prompt {
+    padding: 1% 0%;
+}
+
+element {
+    background-color: @background-light;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+element-text {
+    background-color: #00000000;
+    text-color: inherit;
+	  font:	@icon-font;
+    expand: false;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element.selected {
+  background-color: @selected;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @foreground;
+}
+
+element selected.active {
+    background-color: @background-alt;
+    color: @foreground;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color: @selected;
+    text-color: @foreground;
+    border-radius: 0.2%;
+}
+
+element normal.active,
+element alternate.active {
+    background-color: @background-alt;
+    text-color: @foreground;
+}

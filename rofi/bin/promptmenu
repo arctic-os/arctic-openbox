@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+ROFI='rofi -theme ~/.config/rofi/themes/default/promptmenu.rasi'
+
+yes_text='' no_text='' query='Are you sure?'
+
+MENU="$(printf "${yes_text}\n${no_text}\n" | ${ROFI} -p "$query" -dmenu -selected-row 0)"
+
+case "$MENU" in
+    "$yes_text") echo 0
+    ;;
+    "$no_text")  echo 1
+    ;;
+esac 
+
+exit 0

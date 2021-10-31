@@ -1,0 +1,125 @@
+prompt {
+    enabled: 						            true;
+    margin: 						            0px 0px 0px 8px;
+    padding: 						            8px;
+    background-color: 				      @accent;
+    text-color: 					          @foreground;
+    border:                  		    0px 0px 2px 0px;
+    border-color:                  	@background-light;
+    border-radius:                  10px;
+}
+
+textbox-prompt-colon {
+    expand: 						             false;
+    str: 							               "";
+    border-radius:                   100%;
+    background-color:                @on;
+    text-color:                      @background;
+    padding:                         8px 12px 8px 12px;
+    font:							               "Iosevka Nerd Font 10";
+}
+
+entry {
+    background-color:               @accent;
+    text-color:                     @foreground;
+    placeholder-color:              @foreground;
+    expand:                         true;
+    horizontal-align:               0;
+    placeholder:                    "Search...";
+    blink:                          true;
+    border:                  		     0px 0px 2px 0px;
+    border-color:                  	@background-light;
+    border-radius:                  10px;
+    padding:                        8px;
+}
+
+inputbar {
+	  children: 						[ textbox-prompt-colon, prompt ];
+    background-color:               @background;
+    text-color:                     @foreground;
+    expand:                         false;
+    border:                  		0px 0px 0px 0px;
+    border-radius:                  0px;
+    border-color:                  	@background-light;
+    margin:                         0px 0px 0px 0px;
+    padding:                        0px;
+    position:                       center;
+}
+
+case-indicator {
+    background-color:               @background;
+    text-color:                     @foreground;
+    spacing:                        0;
+}
+
+
+listview {
+    background-color:               @background;
+    columns:                        1;
+    lines:							5;
+    spacing:                        4px;
+    cycle:                          true;
+    dynamic:                        true;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ inputbar, listview ];
+    spacing:                       	15px;
+    padding:                        15px;
+}
+
+element {
+    background-color:               @background;
+    text-color:                     @foreground;
+    orientation:                    horizontal;
+    border-radius:                  10px;
+    padding:                        6px 6px 6px 6px;
+}
+
+element-icon {
+    background-color: 				      inherit;
+    text-color:       				      inherit;
+    size:                           0px;
+    border:                         0px;
+}
+
+element-text {
+    background-color: 				      inherit;
+    text-color:       				      inherit;
+    expand:                         true;
+    horizontal-align:               0;
+    vertical-align:                 0.5;
+    margin:                         2px 0px 2px 6px;
+}
+
+element selected {
+    background-color:               @accent;
+    text-color:                     @on;
+    border:                  		    0px 0px 0px 0px;
+    border-radius:                  10px;
+    border-color:                  	@background-light;
+}
+
+element.active,
+element.selected.urgent {
+    background-color:               @on;
+    text-color:                     @background;
+    border-color:                   @on;
+}
+
+element.selected.urgent {
+    border-color: @background-light;
+}
+
+element.urgent,
+element.selected.active {
+    background-color: @off;
+    text-color: @background;
+    border-color: @off;
+}
+
+element.selected.active {
+    border-color: @background-light;
+}

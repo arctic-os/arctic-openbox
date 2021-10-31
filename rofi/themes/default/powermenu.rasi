@@ -1,0 +1,117 @@
+
+configuration {
+	font:							"FantasqueSansMono Nerd Font 14";
+    show-icons:                     false;
+    drun-display-format:            "{name}";
+    disable-history:                false;
+	sidebar-mode: 					false;
+}
+
+* {
+  icon-font:                            "feather 24";
+}
+
+@import "colors.rasi"
+
+window {
+    transparency:                   "real";
+    background-color:               @background;
+    text-color:                     @foreground;
+    border-radius:                  10px;
+    height:                         80%;
+    width:                          9%;
+    location:                       east;
+    x-offset:                       -5;
+    y-offset:                       0;
+}
+
+prompt {
+    enabled: 						false;
+    padding:                        0.5% 0.5% 0.5% 0%;
+	background-color: 				@background-alt;
+	text-color: 					@foreground;
+}
+
+textbox-prompt-colon {
+	expand: 						false;
+	str: 							"System";
+	background-color: 				@border;
+	text-color: 					@accent;
+    padding:                        1% 1% 1% 2.2%;
+}
+
+inputbar {
+	children: 						[ textbox-prompt-colon ];
+    background-color:               @border;
+    text-color:                     @foreground;
+    expand:                         false;
+    border:                  		0% 0% 0% 0%;
+    border-radius:                  15px;
+    border-color:                  	@border;
+    margin:                         0% 0% 0% 0%;
+    padding:                        0.5%;
+    position:                       center;
+}
+
+listview {
+    background-color:               @background;
+    margin:                         0% 0% 0% 0%;
+    spacing:                        2%;
+    cycle:                          true;
+    dynamic:                        false;
+    layout:                         vertical;
+}
+
+mainbox {
+    background-color:               @background;
+    children:                       [ listview ];
+    spacing:                        0%;
+    padding:                        12px;
+}
+
+element {
+    background-color:               @background-light;
+    text-color:                     @foreground;
+    orientation:                    vertical;
+    border-radius:                  10px;
+}
+
+element-text {
+    background-color: 				#00000000;
+    text-color:       				inherit;
+	font:							@icon-font;
+    expand:                         false;
+    horizontal-align:               0.5;
+    vertical-align:                 0.5;
+    margin:                         4.5% 0%;
+}
+
+element normal.urgent,
+element alternate.urgent {
+    background-color:               @selected;
+    text-color:                     @foreground;
+    border-radius:                  0.2%;
+}
+
+element normal.active,
+element alternate.active {
+    background-color:               @background-alt;
+    text-color:                     @foreground;
+}
+
+element selected {
+    background-color:               @selected;
+    text-color:                     @foreground;
+    border:                  		0%;
+    border-radius:                  10px;
+}
+
+element selected.urgent {
+    background-color:               @urgent;
+    text-color:                     @foreground;
+}
+
+element selected.active {
+    background-color:               @background-alt;
+    color:                          @foreground;
+}

@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
+
+## Options #############################################
+if  [[ $1 = "--logout" ]]; then
+    openbox --exit
+
+elif  [[ $1 = "--suspend" ]]; then
+	mpc -q pause
+	amixer set Master mute
+	betterlockscreen --suspend
+
+elif  [[ $1 = "--reboot" ]]; then
+	systemctl reboot
+
+elif  [[ $1 = "--shutdown" ]]; then
+	systemctl poweroff
+
+elif  [[ $1 = "--lock" ]]; then
+	betterlockscreen --lock
+
+
+## Help Menu #############################################
+else
+echo "
+Powermenu For Openbox Menu
+
+Available options:
+--logout	--suspend	--reboot	--shutdown	--lock
+"
+fi
